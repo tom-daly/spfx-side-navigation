@@ -3,9 +3,9 @@ $panelWidthOpened: 260px;
 
 $white: #fff;
 $orange: orange;
-$grey: #666;
-$yellow: yellow;
-$blue: blue;
+$grey: #7f8c8d;
+$yellow: #f1c40f;
+$blue: #3498db;
 
 /* break points borrowed from Office UI Fabric */
 $ms-screen-min-sm: 320px !default;
@@ -16,28 +16,17 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
 
 @mixin Desktop {
   @media only screen and (min-width: $ms-screen-min-md) {
-      @content;
+    @content;
   }
 }
 
-@mixin Mobile {
-  @media only screen and (max-width: $ms-screen-max-sm) {
-      @content;
-  }
+#spPageChromeAppDiv,
+.sp-App-body {
+  margin-left: $panelWidth;
 }
 
-@include Desktop {
-  #spPageChromeAppDiv,
-  .sp-App-body {
-    margin-left: $panelWidth;
-  }
-}
-
-@include Mobile {
-  #spPageChromeAppDiv,
-  .sp-App-body {
-    margin-left: 0;
-  }
+.visible-i {
+  visibility: visible !important;
 }
 
 .ql-menu {
@@ -52,6 +41,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
 
 .site-nav-node {
   position: relative;
+  background-color: $blue;
   cursor: pointer;
   &.dropdown {
     > div:not(.dynamic-children) {
@@ -67,7 +57,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   }
   &:hover,
   &.opened {
-    background-color: $white;
+    background-color: $blue;
     .icon-node {
       .icon svg {
         fill: $orange;
@@ -141,17 +131,14 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   }
 }
 
-.site-menu-panel:not(.mobile-view) {
+.site-menu-panel {
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
   z-index: 3;
   background-color: $blue;
-  &[data-ribbon-visible="true"] {
-    margin-top: 50px;
-  }
-
+  margin-top: 50px;
   > div:first-child {
     background-color: $white;
   }
@@ -160,23 +147,12 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
     width: $panelWidth;
     height: $panelWidth;
     color: $white;
+    background-color: $blue;
     margin: 0 auto;
     &:hover,
     &.active {
       background-color: $white;
       color: $orange;
-    }
-  }
-
-  .app-launcher-icon {
-    height: $panelWidth;
-    width: $panelWidth;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    .nwh-icon-launcher {
-      top: 12px;
-      position: relative;
     }
   }
 
