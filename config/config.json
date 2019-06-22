@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spfx-side-navigation-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/spfxSideNavigation/SpfxSideNavigationApplicationCustomizer.js",
+          "manifest": "./src/extensions/spfxSideNavigation/SpfxSideNavigationApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpfxSideNavigationApplicationCustomizerStrings": "lib/extensions/spfxSideNavigation/loc/{locale}.js"
+  }
+}

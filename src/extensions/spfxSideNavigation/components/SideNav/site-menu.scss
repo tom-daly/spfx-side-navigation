@@ -1,0 +1,215 @@
+$panelWidth: 50px;
+$panelWidthOpened: 260px;
+
+$white: #fff;
+$orange: orange;
+$grey: #666;
+$yellow: yellow;
+$blue: blue;
+
+/* break points borrowed from Office UI Fabric */
+$ms-screen-min-sm: 320px !default;
+$ms-screen-min-md: 480px !default;
+$ms-screen-min-lg: 640px !default;
+$ms-screen-max-sm: ($ms-screen-min-md - 1);
+$ms-screen-max-md: ($ms-screen-min-lg - 1);
+
+@mixin Desktop {
+  @media only screen and (min-width: $ms-screen-min-md) {
+      @content;
+  }
+}
+
+@mixin Mobile {
+  @media only screen and (max-width: $ms-screen-max-sm) {
+      @content;
+  }
+}
+
+@include Desktop {
+  #spPageChromeAppDiv,
+  .sp-App-body {
+    margin-left: $panelWidth;
+  }
+}
+
+@include Mobile {
+  #spPageChromeAppDiv,
+  .sp-App-body {
+    margin-left: 0;
+  }
+}
+
+.ql-menu {
+  cursor: pointer;
+}
+
+@mixin SiteNavNode {
+  color: $white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.site-nav-node {
+  position: relative;
+  cursor: pointer;
+  &.dropdown {
+    > div:not(.dynamic-children) {
+      .title {
+        width: 170px;
+        margin-right: 30px;
+      }
+      button {
+        position: absolute;
+        right: 10px;
+      }
+    }
+  }
+  &:hover,
+  &.opened {
+    background-color: $white;
+    .icon-node {
+      .icon svg {
+        fill: $orange;
+      }
+      .title,
+      i {
+        color: $orange;
+      }
+      button {
+        background-color: transparent;
+      }
+    }
+  }
+  .icon-node {
+    div {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .title {
+      @include SiteNavNode();
+    }
+    i {
+      color: $white;
+    }
+    .icon {
+      width: $panelWidth;
+      height: $panelWidth;
+      padding: 12px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      svg {
+        max-width: $panelWidth;
+        width: 100%;
+        height: auto;
+        fill: $white;
+      }
+    }
+    button {
+      margin: 0;
+      padding: 0;
+      height: auto;
+      width: auto;
+      button {
+        margin: 0;
+        padding: 0;
+        height: auto;
+        width: auto;
+      }
+      [data-icon-name="ChevronDownSmall"],
+      [data-icon-name="ChevronUpSmall"] {
+        position: relative;
+        top: -2px;
+      }
+    }
+  }
+  .dynamic-children {
+    background-color: $orange;
+    .site-nav-node {
+      .title-node {
+        padding: 10px;
+        color: $white;
+      }
+      &:hover {
+        background-color: $grey;
+        .title-node {
+          color: $yellow;
+        }
+      }
+    }
+  }
+}
+
+.site-menu-panel:not(.mobile-view) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 3;
+  background-color: $blue;
+  &[data-ribbon-visible="true"] {
+    margin-top: 50px;
+  }
+
+  > div:first-child {
+    background-color: $white;
+  }
+
+  .site-menu-icon {
+    width: $panelWidth;
+    height: $panelWidth;
+    color: $white;
+    margin: 0 auto;
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $orange;
+    }
+  }
+
+  .app-launcher-icon {
+    height: $panelWidth;
+    width: $panelWidth;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    .nwh-icon-launcher {
+      top: 12px;
+      position: relative;
+    }
+  }
+
+  .site-menu {
+    > .site-nav-node {
+      cursor: pointer;
+    }
+    .dynamic-children {
+      display: none;
+    }
+    &:not(.opened) {
+      width: $panelWidth;
+      .site-nav-node:hover .dynamic-children.flyouts {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: $panelWidth;
+        width: $panelWidthOpened;
+      }
+    }
+    &.opened {
+      width: $panelWidthOpened;
+      .menu-toggle {
+        margin-left: $panelWidthOpened - $panelWidth;
+      }
+      .site-nav-node .dynamic-children {
+        display: block;
+        .site-nav-node {
+          .title-node {
+            padding-left: $panelWidth;
+          }
+        }
+      }
+    }
+  }
+}
