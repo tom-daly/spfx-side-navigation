@@ -6,6 +6,13 @@ $orange: orange;
 $grey: #7f8c8d;
 $yellow: #f1c40f;
 $blue: #3498db;
+$green: #27ae60;
+$purple: #8e44ad;
+
+$sideNavBarBgColor: #2c3e50;
+$navNodeTextIconColor: $white;
+$navNodeTextIconHoverColor: $white;
+$navNodeTextIconHoverBgColor: #e74c3c;
 
 /* break points borrowed from Office UI Fabric */
 $ms-screen-min-sm: 320px !default;
@@ -34,14 +41,14 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
 }
 
 @mixin SiteNavNode {
-  color: $white;
+  color: $navNodeTextIconColor;
   font-weight: bold;
   font-size: 16px;
 }
 
 .site-nav-node {
   position: relative;
-  background-color: $blue;
+  background-color: $sideNavBarBgColor;
   cursor: pointer;
   &.dropdown {
     > div:not(.dynamic-children) {
@@ -50,6 +57,8 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
         margin-right: 30px;
       }
       button {
+        border: 0;
+        background-color: transparent;
         position: absolute;
         right: 10px;
       }
@@ -57,14 +66,14 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   }
   &:hover,
   &.opened {
-    background-color: $blue;
     .icon-node {
+      background-color: $navNodeTextIconHoverBgColor;
       .icon svg {
-        fill: $orange;
+        fill: $navNodeTextIconHoverColor;
       }
       .title,
       i {
-        color: $orange;
+        color: $navNodeTextIconHoverColor;
       }
       button {
         background-color: transparent;
@@ -80,7 +89,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
       @include SiteNavNode();
     }
     i {
-      color: $white;
+      color: $navNodeTextIconColor;
     }
     .icon {
       width: $panelWidth;
@@ -93,7 +102,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
         max-width: $panelWidth;
         width: 100%;
         height: auto;
-        fill: $white;
+        fill: $navNodeTextIconColor;
       }
     }
     button {
@@ -119,12 +128,12 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
     .site-nav-node {
       .title-node {
         padding: 10px;
-        color: $white;
+        color: $navNodeTextIconColor;
       }
       &:hover {
-        background-color: $grey;
+        background-color: $navNodeTextIconHoverBgColor;
         .title-node {
-          color: $yellow;
+          color: $navNodeTextIconHoverColor;
         }
       }
     }
@@ -137,7 +146,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   top: 0;
   height: 100vh;
   z-index: 3;
-  background-color: $blue;
+  background-color: $sideNavBarBgColor;
   margin-top: 50px;
   > div:first-child {
     background-color: $white;
@@ -146,17 +155,20 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   .site-menu-icon {
     width: $panelWidth;
     height: $panelWidth;
-    color: $white;
-    background-color: $blue;
+    color: $navNodeTextIconColor;
+    background-color: $sideNavBarBgColor;
     margin: 0 auto;
     &:hover,
     &.active {
-      background-color: $white;
-      color: $orange;
+      background-color: $navNodeTextIconHoverBgColor;
+      color: $navNodeTextIconHoverColor;
     }
   }
 
   .site-menu {
+    button {
+      border: 0;
+    }
     > .site-nav-node {
       cursor: pointer;
     }

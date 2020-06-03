@@ -2,6 +2,6 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/deploy-azure-storage.schema.json",
   "workingDir": "./temp/deploy/",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "spfx-side-navigation",
+  "container": "spfx-side-navigation-v-2",
   "accessKey": "<!-- ACCESS KEY -->"
 }

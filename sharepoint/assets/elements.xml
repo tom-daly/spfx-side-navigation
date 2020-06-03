@@ -3,7 +3,7 @@
     <CustomAction
         Title="SpfxSideNavigation"
         Location="ClientSideExtension.ApplicationCustomizer"
-        ClientSideComponentId="496f0e1b-42ae-41ab-aad1-6b9f87f88196"
-        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+        ClientSideComponentId="b53e7bab-2332-459a-ad60-b9ae2b7d41ec"
+        ClientSideComponentProperties="{}">
     </CustomAction>
 </Elements>

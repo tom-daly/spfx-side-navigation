@@ -3,8 +3,8 @@ import ISideNavItem from "../model/ISideNavItem";
 import ISPSideNavItem from "../model/ISPSideNavItem";
 import { sp } from "@pnp/sp";
 
-export default class SideMenuProvider implements ISideNavProvider {
-  public getSideMenu(): Promise<ISideNavItem[]> {
+export default class SideNavProvider implements ISideNavProvider {
+  public getSideNav(): Promise<ISideNavItem[]> {
     return sp.web.lists
       .getByTitle("Side Nav List")
       .items.select(
@@ -20,7 +20,7 @@ export default class SideMenuProvider implements ISideNavProvider {
       .get()
       .then(
         (items: ISPSideNavItem[]): ISideNavItem[] => {
-          let siteNavItems: ISideNavItem[] = [];
+          const siteNavItems: ISideNavItem[] = [];
           items.forEach(
             (item: ISPSideNavItem): void => {
               if (!item.SideNavParent) {
@@ -43,7 +43,7 @@ export default class SideMenuProvider implements ISideNavProvider {
     spNavItems: ISPSideNavItem[],
     filter: string
   ): ISideNavItem[] {
-    let subNavItems: ISideNavItem[] = [];
+    const subNavItems: ISideNavItem[] = [];
     spNavItems.forEach(
       (item: ISPSideNavItem): void => {
         if (item.SideNavParent && item.SideNavParent.Title === filter) {
@@ -55,6 +55,6 @@ export default class SideMenuProvider implements ISideNavProvider {
         }
       }
     );
-    return subNavItems.length > 0 ? subNavItems : null;
+    return subNavItems.length > 0 ? subNavItems : undefined;
   }
 }

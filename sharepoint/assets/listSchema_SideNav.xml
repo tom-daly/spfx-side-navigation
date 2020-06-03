@@ -1,0 +1,57 @@
+<List
+    xmlns:ows="Microsoft SharePoint" Title="List Schema" Name="ListSchema" Direction="$Resources:Direction;" Url="Lists/ListSchema" BaseType="0" EnableContentTypes="FALSE" FolderCreation="FALSE" VersioningEnabled="FALSE" DisableAttachments="TRUE"
+    xmlns="http://schemas.microsoft.com/sharepoint/" RootWebOnly="FALSE">
+    <MetaData>
+        <ContentTypes>
+            <ContentType ID="0x01009E87D8B1F5644288868EB55D4494DF89" Name="Side Nav Content Type">
+                <FieldRefs>
+                    <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+                    <!-- Custom Field refs -->
+                    <FieldRef ID="{B0660D75-DB66-466A-A833-C94552F20448}" Name="SideNavUrl" />
+                    <FieldRef ID="{9481A117-FD27-4A8B-AD12-925E85211660}" Name="SideNavIconSvg" />
+                    <FieldRef ID="{E5F03076-DFAB-4B86-982F-BD999F8D539A}" Name="SideNavOrder" />
+                    <FieldRef ID="{2AC69BF8-C72F-4EE2-A84E-1A27DADFF868}" Name="SideNavOpenInNewWindow" />
+                    <FieldRef ID="{068992B0-C110-411E-A152-4C17E17E43DE}" Name="SideNavParent" />
+                </FieldRefs>
+            </ContentType>
+        </ContentTypes>
+        <Fields>
+            <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" FromBaseType="TRUE" ColName="nvarchar1" />
+            <!--Custom fields -->
+            <Field ID="{B0660D75-DB66-466A-A833-C94552F20448}" Name="SideNavUrl" StaticName="SideNavUrl" DisplayName="Url" Type="Text" Overwrite="TRUE" />
+            <Field ID="{9481A117-FD27-4A8B-AD12-925E85211660}" Name="SideNavIconSvg" StaticName="SideNavIconSvg" DisplayName="Icon SVG" Type="Note" RichText="FALSE" Overwrite="TRUE" />
+            <Field ID="{E5F03076-DFAB-4B86-982F-BD999F8D539A}" Name="SideNavOrder" StaticName="SideNavOrder" DisplayName="Order" Type="Number" Decimals="0" Percentage="False" Overwrite="TRUE" />
+            <Field ID="{2AC69BF8-C72F-4EE2-A84E-1A27DADFF868}" Name="SideNavOpenInNewWindow" StaticName="SideNavOpenInNewWindow" DisplayName="Open In New Window" Type="Boolean" Overwrite="TRUE">
+                <Default>0</Default>
+            </Field>
+            <Field ID="{068992B0-C110-411E-A152-4C17E17E43DE}" Name="SideNavParent" StaticName="SideNavParent" DisplayName="Parent" Type="Lookup" List="Lists/SideNavList" ShowField="Title" Overwrite="TRUE" />
+        </Fields>
+        <Views>
+            <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+                <XslLink Default="TRUE">main.xsl</XslLink>
+                <JSLink>clienttemplates.js</JSLink>
+                <RowLimit Paged="TRUE">30</RowLimit>
+                <Toolbar Type="Standard" />
+                <ViewFields>
+                    <FieldRef Name="Title"></FieldRef>
+                    <FieldRef Name="SideNavUrl"></FieldRef>
+                    <FieldRef Name="SideNavIconSvg"></FieldRef>
+                    <FieldRef Name="SideNavOpenInNewWindow"></FieldRef>
+                    <FieldRef Name="SideNavOrder"></FieldRef>
+                    <FieldRef Name="SideNavParent"></FieldRef>
+                </ViewFields>
+                <Query>
+                    <OrderBy>
+                        <!-- <FieldRef Name="ID"></FieldRef> -->
+                        <FieldRef Name="SideNavOrder"></FieldRef>
+                    </OrderBy>
+                </Query>
+            </View>
+        </Views>
+        <Forms>
+            <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+        </Forms>
+    </MetaData>
+</List>

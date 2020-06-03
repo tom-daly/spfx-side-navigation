@@ -22,59 +22,22 @@ export default class SideNav extends React.Component<
     window.addEventListener("click", this.handleOutsideClick, true);
   }
 
-  private handleOutsideClick = (event: any) => {
-    if (!this.state.isOpened) return; //if site nav is already closed, abort
-
-    let foundSideMenuPanel = false;
-    for (let i = 0; i < event.path.length; i++) {
-      let node = event.path[i];
-      if (!node.className) continue; //skip if no class name
-      if (node.className.toLowerCase().indexOf("site-menu-panel") !== -1) {
-        foundSideMenuPanel = true;
-        break;
-      }
-    }
-
-    if (!foundSideMenuPanel) this.toggleNav(); //if no site menu panel found, close the site menu
-  };
-
   public componentWillMount(): void {
     this.sideNavProvider = new SideNavProvider();
   }
 
   public componentDidMount(): void {
     this.sideNavProvider
-      .getSideMenu()
-      .then(
-        (result: ISideNavItem[]): void => {
-          this.setState({
-            siteNavItems: result
-          });
-        }
-      )
-      .catch(error => {
+      .getSideNav()
+      .then((result: ISideNavItem[]): void => {
+        this.setState({
+          siteNavItems: result
+        });
+      })
+      .catch((error) => {
         // console.log(error);
       });
   }
-
-  private toggleNav = (): void => {
-    this.setState((state, props) => ({
-      isOpened: !state.isOpened
-    }));
-  }
-
-  private renderSideNavNodes = (
-    siteNavItem: ISideNavItem,
-    index: number
-  ): JSX.Element => {
-    return (
-      <SideNavNode
-        key={index}
-        siteNavItem={siteNavItem}
-        navIsOpened={this.state.isOpened}
-      />
-    );
-  };
 
   public render(): JSX.Element {
     const siteMenuClass: string = this.state.isOpened
@@ -112,4 +75,41 @@ export default class SideNav extends React.Component<
       </div>
     );
   }
+
+  private handleOutsideClick = (event: any) => {
+    if (!this.state.isOpened) { return; } // if site nav is already closed, abort
+
+    let foundSideNavPanel: boolean = false;
+    for (let i: number = 0; i < event.path.length; i++) {
+      const node: HTMLElement = event.path[i];
+      if (!node.className) { continue; } // skip if no class name
+      if (node.className.toLowerCase().indexOf("site-menu-panel") !== -1) {
+        foundSideNavPanel = true;
+        break;
+      }
+    }
+
+    if (!foundSideNavPanel) {
+      this.toggleNav(); // if no site menu panel found, close the site menu
+    }
+  };
+
+  private toggleNav = (): void => {
+    this.setState((state, props) => ({
+      isOpened: !state.isOpened
+    }));
+  };
+
+  private renderSideNavNodes = (
+    siteNavItem: ISideNavItem,
+    index: number
+  ): JSX.Element => {
+    return (
+      <SideNavNode
+        key={index}
+        siteNavItem={siteNavItem}
+        navIsOpened={this.state.isOpened}
+      />
+    );
+  };
 }

@@ -6,7 +6,7 @@
     "default": {
       "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
       "customActions": {
-        "496f0e1b-42ae-41ab-aad1-6b9f87f88196": {
+        "b53e7bab-2332-459a-ad60-b9ae2b7d41ec": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "testMessage": "Test message"
@@ -17,7 +17,7 @@
     "spfxSideNavigation": {
       "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
       "customActions": {
-        "496f0e1b-42ae-41ab-aad1-6b9f87f88196": {
+        "b53e7bab-2332-459a-ad60-b9ae2b7d41ec": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "testMessage": "Test message"

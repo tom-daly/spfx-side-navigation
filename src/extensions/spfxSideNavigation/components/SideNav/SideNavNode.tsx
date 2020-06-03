@@ -18,69 +18,8 @@ export default class SideNavNode extends React.Component<
     this.nodeClick = this.nodeClick.bind(this);
   }
 
-  private check(): void {
-    let node: Element = ReactDOM.findDOMNode(this.refs.children) as Element;
-    if (!node) {
-      return;
-    }
-
-    let rect: ClientRect = node.getBoundingClientRect();
-    let space: number = window.innerHeight - (rect.top + rect.height);
-    if (space < 0) {
-      // it's off screen
-      let heightStyle: string =
-        "height: " + String(node.clientHeight + space) + "px;";
-      let overflowStyle: string = "overflow-y: auto; -webkit-overflow-scrolling: touch;";
-      node.setAttribute("style", heightStyle + overflowStyle);
-    } else {
-      node.setAttribute("style", "height: auto;");
-    }
-  }
-
-  private nodeClick(e: React.MouseEvent<HTMLDivElement>): void {
-    if (!this.props.siteNavItem) {
-      return;
-    }
-    if (this.props.siteNavItem.url) {
-      /* if has a url navigate to that address */
-      if (this.props.siteNavItem.openInNewWindow) {
-        window.open(this.props.siteNavItem.url, "_blank");
-      } else {
-        window.location.href = this.props.siteNavItem.url;
-      }
-      return;
-    }
-    if (!this.props.siteNavItem.url) {
-      /* if no url then change the state */
-
-      if (this.props.navIsOpened) {
-        /* only change state if the navigation is opened */
-        this.setState(
-          {
-            isOpened: !this.state.isOpened
-          },
-          () => this.check()
-        );
-      }
-      return;
-    }
-  }
-
-  private renderSubNavItems = (
-    siteNavItem: ISideNavItem,
-    index: number
-  ): JSX.Element => {
-    return (
-      <SideNavNode
-        key={index}
-        siteNavItem={siteNavItem}
-        navIsOpened={this.props.navIsOpened}
-      />
-    );
-  };
-
   public render(): JSX.Element {
-    var nodeClasses: string[] = ["site-nav-node"];
+    const nodeClasses: string[] = ["site-nav-node"];
     if (this.state.isOpened && this.props.navIsOpened) {
       nodeClasses.push("opened");
     }
@@ -89,7 +28,7 @@ export default class SideNavNode extends React.Component<
     }
     return (
       <div key={this.props.key} className={nodeClasses.join(" ")}>
-        <div onClick={e => this.nodeClick(e)}>
+        <div role="menu" onClick={e => this.nodeClick(e)}>
           {(this.props.siteNavItem.svg && (
             <div className="icon-node ms-fadeIn400">
               <div
@@ -152,4 +91,65 @@ export default class SideNavNode extends React.Component<
       </div>
     );
   }
+
+  private check(): void {
+    const node: Element = ReactDOM.findDOMNode(this.refs.children) as Element;
+    if (!node) {
+      return;
+    }
+
+    const rect: ClientRect = node.getBoundingClientRect();
+    const space: number = window.innerHeight - (rect.top + rect.height);
+    if (space < 0) {
+      // it's off screen
+      const heightStyle: string =
+        "height: " + String(node.clientHeight + space) + "px;";
+      const overflowStyle: string = "overflow-y: auto; -webkit-overflow-scrolling: touch;";
+      node.setAttribute("style", heightStyle + overflowStyle);
+    } else {
+      node.setAttribute("style", "height: auto;");
+    }
+  }
+
+  private nodeClick(e: React.MouseEvent<HTMLDivElement>): void {
+    if (!this.props.siteNavItem) {
+      return;
+    }
+    if (this.props.siteNavItem.url) {
+      /* if has a url navigate to that address */
+      if (this.props.siteNavItem.openInNewWindow) {
+        window.open(this.props.siteNavItem.url, "_blank");
+      } else {
+        window.location.href = this.props.siteNavItem.url;
+      }
+      return;
+    }
+    if (!this.props.siteNavItem.url) {
+      /* if no url then change the state */
+
+      if (this.props.navIsOpened) {
+        /* only change state if the navigation is opened */
+        this.setState(
+          {
+            isOpened: !this.state.isOpened
+          },
+          () => this.check()
+        );
+      }
+      return;
+    }
+  }
+
+  private renderSubNavItems = (
+    siteNavItem: ISideNavItem,
+    index: number
+  ): JSX.Element => {
+    return (
+      <SideNavNode
+        key={index}
+        siteNavItem={siteNavItem}
+        navIsOpened={this.props.navIsOpened}
+      />
+    );
+  };
 }

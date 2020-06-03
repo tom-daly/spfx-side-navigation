@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
-  "id": "496f0e1b-42ae-41ab-aad1-6b9f87f88196",
+  "id": "b53e7bab-2332-459a-ad60-b9ae2b7d41ec",
   "alias": "SpfxSideNavigationApplicationCustomizer",
   "componentType": "Extension",
   "extensionType": "ApplicationCustomizer",

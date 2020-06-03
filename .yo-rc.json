@@ -1,12 +1,11 @@
 {
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
-    "environment": "spo",
-    "version": "1.8.2",
-    "libraryName": "spfx-side-navigation",
-    "libraryId": "ea0acc5b-288d-45d2-9857-b7a9fc14bdee",
+    "environment": "onprem19",
+    "version": "1.10.0",
+    "libraryName": "spfx-side-navigation-v-2",
+    "libraryId": "3564f9fb-42a8-48ca-ad0c-1c7d6c01eb72",
     "packageManager": "npm",
-    "isDomainIsolated": false,
     "componentType": "extension",
     "extensionType": "ApplicationCustomizer"
   }
