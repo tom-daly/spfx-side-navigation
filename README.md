@@ -10,7 +10,7 @@ This is just an interesting example of a side navigation that would be useful on
 
 ## Modern Page Demonstration
 Designed for Modern Sites
-![demo on modern](https://github.com/tom-daly/spfx-side-navigation/tree/master/images/demo.gif)
+![demo on modern](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/demo.gif)
 
 # Prerequisites
 1. [SPFx Development Environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
