@@ -12,35 +12,20 @@ This is just an interesting example of a side navigation that would be useful on
 Designed for Modern Sites
 ![demo on modern](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/demo.gif)
 
-# Prerequisites
+# Prerequisites to Build
 1. [SPFx Development Environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
-2. [Powershell PnP](https://github.com/SharePoint/PnP-PowerShell/releases)
-3. [Tenant App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant#create-app-catalog-site)
+2. [Tenant App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant#create-app-catalog-site)
 4. Node 8.x.x or 10.x.x
 
 # Installation & Deployment
 The following steps assume that you've cloned this repository or downloaded the files and successfully installed all the dependencies using 'npm install'. Make sure to use the same version of node to get a successfull build. 
 
 ## Overview
-1. Provision the Global Nav List
-2. Build the SPFx Application Customizer
+1. Build the SPFx Application Customizer
 2. Deploy the SPFx Application Customizer
 3. Add the App to your site
 
-## Step 1 - Provision the Global Nav List
-In this step we will provision the Global Navigation list to your tenant using a Powershell PnP provisioning template and cmdlets. Inside the './provisioning' folder there will be a 'deploy.ps1' that will automate this process.
-
-***It is recommended to deploy the list to the root "https://{domain}.sharepoint.com" of your tenant as this is where the application customizer is designed to look for the list by default.*** 
-
-1. Navigate to a Classic site
-2. From the SharePoint Online Management Shell navigate to the 'provisioning' folder
-3. Run './deploy.ps1' 
-4. Enter url of the classic site that you want to deploy to 'https://{domain}.sharepoint.com/'
-5. Enter your credentials
-
-![provision the list](https://i.imgur.com/rQtjBEC.gif)
-
-## Step 2 - Build the Solution
+## Step 1 - Build the Solution
 It is recommended to run the 'build.cmd' file from the projects root folder. This file does all the normal SPFx build commands such as build, bundle, package-solution but it will also generate the necessary file needed for support on classic sites. The 'build.cmd' also does a number of other things out of scope for guide. Please refer to the following blogs posts for more information on this file.
 
 + [Simple Build Script for the SharePoint Framework](https://thomasdaly.net/2018/05/07/simple-build-script-for-the-sharepoint-framework/)
@@ -54,18 +39,7 @@ When the build script completes you will have the app package for modern sites l
 
 ![App Package](https://i.imgur.com/5I1BrRE.png)
 
-### Classic JS File Build
-As mentioned in the introduction, by using the 'build.cmd' the build process will generate a JavaScript file suitable for deployment on a Classic site. 
-
-Without going into too much detail, the build process calls a separate webpack configuration that points to a seperate component for Classic Mode. This webpack configuration and the custom component both have additional references and polyfills in order for it to work on a Classic Site. 
-
-After running the build script you will have the .js file for classic sites located in './classic-dist/top-navigation.js'
-
-![JavaScript File](https://i.imgur.com/adOUY2h.png)
-
-***Deploying to a Classic site will target and override the default navigation. The code targets the element '#DeltaTopNavigation'. This reference can be changed in the 'components/ClassicMode/ClassicMode.ts' file*** 
-
-## Step 3 - Deploy the Application Customizer
+## Step 2 - Deploy the Application Customizer
 
 #### Modern Deployment
 Modern site deployment is straightforward. [For more information about this process see official MS Docs](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog)
@@ -75,3 +49,24 @@ Modern site deployment is straightforward. [For more information about this proc
 3. Click and drag the .sppkg file into the tenant App Catalog
 
 ![deploy app customizer](https://i.imgur.com/il6utDR.gif)
+
+## Step 4 - Activate the App
+Activation on a Modern site deployment is straightforward. [For more information about this process see official MS Docs](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog)
+
+1. Navigate to your Modern site
+2. From the gear icon, click 'Add an App'
+3. In the left menu, click 'From your Organization'
+4. Click 'spfx-side-navigation-client-side-solution'
+
+***In a minute or two it will be activated on that modern site***
+
+TODO: ADD ACTIVATION VIDEO
+
+# Modifications
+
+## Updating the Styles + Changing Colors
+The project was written with a global sass stylesheet for Modern sites first and was then extended to support Classic sites. It should be simple enough to update the hex colors and rebuild to match your site's palette. 
+
++ site-menu.scss - Contains all the styles for the menu for both Classic and Modern sites. This file contains sass variables to easily update the colors of the menus to match your environment. All the other sass should not be adjusted as it controls the function of the menu.
+
+![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/colors.png)
