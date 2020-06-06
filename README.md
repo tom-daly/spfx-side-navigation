@@ -3,11 +3,11 @@ This project is an SPFx application customizer built for Modern SharePoint sites
 
 Rebuilt fresh on SPFx v1.4 so that it will support:
 
-* Environments:
+Environments:
 + Office 365
 + SharePoint 2019 
 
-* Browers:
+Browers:
 + IE 11
 + Chrome
 + FireFox
