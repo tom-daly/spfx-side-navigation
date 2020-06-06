@@ -32,12 +32,12 @@ It is recommended to run the 'build.cmd' file from the projects root folder. Thi
 + [SPFx Automatically Generating Revision Numbers](https://thomasdaly.net/2018/08/12/spfx-automatically-generating-revision-numbers/)
 + [Update: SPFx Automatically Generating Revision Numbers + Versioning](https://thomasdaly.net/2018/08/21/update-spfx-automatically-generating-revision-numbers-versioning/)
 
-![build](https://i.imgur.com/8G55Dym.png)
+![build](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/build.png)
 
 ### Modern App Build
-When the build script completes you will have the app package for modern sites located in './sharepoint/solution/spfx-global-navigation.sppkg'
+When the build script completes you will have the app package for modern sites located in './sharepoint/solution/spfx-side-navigation.sppkg'
 
-![App Package](https://i.imgur.com/5I1BrRE.png)
+![App Package](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/package.png)
 
 ## Step 2 - Deploy the Application Customizer
 
@@ -60,7 +60,7 @@ Activation on a Modern site deployment is straightforward. [For more information
 
 ***In a minute or two it will be activated on that modern site***
 
-TODO: ADD ACTIVATION VIDEO
+![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/add_app.gif)
 
 # Modifications
 
@@ -70,3 +70,14 @@ The project was written with a global sass stylesheet for Modern sites first and
 + site-menu.scss - Contains all the styles for the menu for both Classic and Modern sites. This file contains sass variables to easily update the colors of the menus to match your environment. All the other sass should not be adjusted as it controls the function of the menu.
 
 ![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/colors.png)
+
+# How To Use
+It's super easy to use, once activated just add items to the list.
+
+## Side Nav List
+In Site Contents you'll see a new list called "Side Nav List" just add new list items.
+
+The current implementation supports ANY SVG icon as long as its one color and you can provide the list item the SVG code. This way we can recolor with CSS and it will seamless fit into the 
+navigation. 
+
+![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/new_item.png)
