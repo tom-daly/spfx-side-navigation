@@ -57,7 +57,7 @@ Modern site deployment is straightforward. [For more information about this proc
 
 ![deploy app customizer](https://i.imgur.com/il6utDR.gif)
 
-## Step 4 - Activate the App
+## Step 3 - Activate the App
 Activation on a Modern site deployment is straightforward. [For more information about this process see official MS Docs](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog)
 
 1. Navigate to your Modern site
