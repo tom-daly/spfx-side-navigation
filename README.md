@@ -1,9 +1,16 @@
 # Introduction
 This project is an SPFx application customizer built for Modern SharePoint sites / pages. It will place itself in the header placeholder of your site and pull navigation items from the list contained within the site. It could be a global navigation if you replace provider -- check out this project [https://github.com/tom-daly/spfx-global-navigation]
 
-Rebuilt fresh on SPFx v1.4 so that it will support both 
+Rebuilt fresh on SPFx v1.4 so that it will support:
+
+Environments:
 +Office 365
 +SharePoint 2019 
+
+Browers:
++IE 11
++Chrome
++FireFox
 
 ## Why does this project exist? 
 This is just an interesting example of a side navigation that would be useful on Modern Communication sites as they don't have a left navigation. Inspiration taken from the Office 365 Admin Portal Left Navigation.
