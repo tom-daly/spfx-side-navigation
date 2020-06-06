@@ -87,4 +87,4 @@ In Site Contents you'll see a new list called "Side Nav List" just add new list 
 The current implementation supports ANY SVG icon as long as its one color and you can provide the list item the SVG code. This way we can recolor with CSS and it will seamless fit into the 
 navigation. 
 
-![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/new_item.png)
+![update colors](https://github.com/tom-daly/spfx-side-navigation/blob/master/images/new_item.gif)
