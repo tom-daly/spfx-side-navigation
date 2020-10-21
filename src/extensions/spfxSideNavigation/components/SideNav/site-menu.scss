@@ -59,6 +59,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
       }
     }
   }
+  &.active,
   &:hover,
   &.opened {
     .icon-node {
@@ -125,6 +126,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
         padding: 10px;
         color: $navNodeTextIconColor;
       }
+      &.active,
       &:hover {
         background-color: $navNodeTextIconHoverBgColor;
         .title-node {
