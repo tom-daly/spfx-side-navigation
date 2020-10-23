@@ -9,6 +9,7 @@ import {
 } from "@microsoft/sp-application-base";
 import { setup as pnpSetup } from "@pnp/common";
 import SideNav from "./components/SideNav/SideNav";
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
 // import * as strings from 'SpfxSideNavigationApplicationCustomizerStrings';
 
@@ -22,6 +23,7 @@ export default class SpfxSideNavigationApplicationCustomizer
 
     @override
     public onInit(): Promise<void> {
+      initializeIcons();
       return super.onInit().then(_ => {
         pnpSetup({
           spfxContext: this.context

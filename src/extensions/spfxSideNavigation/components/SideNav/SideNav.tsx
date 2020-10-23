@@ -17,7 +17,7 @@ export default class SideNav extends React.Component<
     super(props);
     this.state = {
       siteNavItems: [],
-      isOpened: false
+      isOpened: false,
     };
     window.addEventListener("click", this.handleOutsideClick, true);
   }
@@ -31,11 +31,11 @@ export default class SideNav extends React.Component<
       .getSideNav()
       .then((result: ISideNavItem[]): void => {
         this.setState({
-          siteNavItems: result
+          siteNavItems: result,
         });
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
       });
   }
 
@@ -50,7 +50,7 @@ export default class SideNav extends React.Component<
       <div
         className={`site-menu-panel ms-slideRightIn40 visible-i`}
         style={{
-          visibility: "hidden"
+          visibility: "hidden",
         }} /* set to hidden then onces css loads it will be visible */
       >
         <div className={siteMenuClass}>
@@ -60,7 +60,7 @@ export default class SideNav extends React.Component<
                 className="site-menu-icon"
                 checked={false}
                 iconProps={{
-                  iconName: toggleIconName
+                  iconName: toggleIconName,
                 }}
                 title="Toggle Menu"
                 ariaLabel="Toggle Menu"
@@ -77,12 +77,16 @@ export default class SideNav extends React.Component<
   }
 
   private handleOutsideClick = (event: any) => {
-    if (!this.state.isOpened) { return; } // if site nav is already closed, abort
+    if (!this.state.isOpened) {
+      return;
+    } // if site nav is already closed, abort
 
     let foundSideNavPanel: boolean = false;
     for (let i: number = 0; i < event.path.length; i++) {
       const node: HTMLElement = event.path[i];
-      if (!node.className) { continue; } // skip if no class name
+      if (!node.className) {
+        continue;
+      } // skip if no class name
       if (node.className.toLowerCase().indexOf("site-menu-panel") !== -1) {
         foundSideNavPanel = true;
         break;
@@ -96,7 +100,7 @@ export default class SideNav extends React.Component<
 
   private toggleNav = (): void => {
     this.setState((state, props) => ({
-      isOpened: !state.isOpened
+      isOpened: !state.isOpened,
     }));
   };
 
