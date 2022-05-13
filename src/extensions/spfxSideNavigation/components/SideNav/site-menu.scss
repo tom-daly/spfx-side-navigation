@@ -1,4 +1,4 @@
-$panelWidth: 50px;
+$panelWidth: 48px;
 $panelWidthOpened: 260px;
 
 $white: #fff;
@@ -24,7 +24,7 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
 
 #spPageChromeAppDiv,
 .sp-App-body {
-  margin-left: $panelWidth;
+  //margin-left: $panelWidth;
 }
 
 .visible-i {
@@ -142,9 +142,9 @@ $ms-screen-max-md: ($ms-screen-min-lg - 1);
   left: 0;
   top: 0;
   height: 100vh;
-  z-index: 3;
+  z-index: 999;
   background-color: $sideNavBarBgColor;
-  margin-top: 50px;
+  margin-top: 48px;
   > div:first-child {
     background-color: $white;
   }
